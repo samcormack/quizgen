@@ -11,6 +11,6 @@ def quiz():
             int(request.form['maxsum']),
             int(request.form['n_questions'])
         )
-        return render_template('output.html', questions=questions, params=request.form)
+        return render_template('output.html.j2', questions=questions, params=request.form)
     else:
-        return render_template('quiz.html')
+        return render_template('quiz.html.j2')

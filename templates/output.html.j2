@@ -1,0 +1,15 @@
+{% extends "base.html.j2" %}
+
+{% block content %}
+  <button type="button" onclick="window.location.href= '/';">Change parameters</button>
+  <form action="/" method="post">
+    <input type="hidden" name="max1" value={{params['max1']}}>
+    <input type="hidden" name="max2" value={{params['max2']}}>
+    <input type="hidden" name="maxsum" value={{params['maxsum']}}>
+    <input type="hidden" name="n_questions" value={{params['n_questions']}}>
+    <input type="submit" value="Re-generate">
+  </form>
+  {% for question in questions %}
+  <p>{{question}}</p>
+  {% endfor %}
+{% endblock %}

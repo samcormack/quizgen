@@ -1,0 +1,22 @@
+body {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  background-color: #f4f8ff;
+  font-family: 'Poppins', sans-serif;
+}
+
+.content{
+  width: 60%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: #fff;
+  margin: auto;
+  padding: 15px;
+  box-shadow: 0px 0px 6px 0px;
+}
+
+h1 {
+  margin-top: 0px;
+  text-align: center;
+  font-family: 'Chewy', cursive;
+}
