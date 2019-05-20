@@ -10,6 +10,9 @@ def quiz():
         questions = quiz.generate()
         return render_template('output.html.j2', questions=questions, quiz=quiz)
     else:
-        quiztype = request.args.get('type', 'add')
+        quiztype = request.args.get('type', 'Addition')
         quiz_cls = Quiz.get(quiztype)
         return render_template('quiz.html.j2', quiz=quiz_cls(), types=Quiz.types())
+
+if __name__=='__main__':
+    app.run(debug=True)
