@@ -94,12 +94,12 @@ class SubtractionQuiz(Quiz):
 
 class BlanksMixin:
     @staticmethod
-    def qstring(n, x, y, template):
+    def qstring(n, x, y, template, ans_func):
         blankpos = random.randrange(3)
         if blankpos == 0:
-            return template.format(n, '_', y, x-y)
+            return template.format(n, '_', y, ans_func(x,y))
         elif blankpos == 1:
-            return template.format(n, x, '_', x-y)
+            return template.format(n, x, '_', ans_func(x,y))
         elif blankpos == 2:
             return template.format(n, x, y, '_')
 
@@ -119,7 +119,7 @@ class AdditionBlanksQuiz(Quiz, BlanksMixin):
         """ return list of strings with quiz questions """
         pairs = self.pairs(lambda x,y: x+y <= self.values['maxsum'])
         return [
-            self.qstring(n+1, first, second, "{}) {} + {} = {}")
+            self.qstring(n+1, first, second, "{}) {} + {} = {}", operator.add)
             for (n,(first,second)) in enumerate(pairs)
         ]
 
@@ -130,6 +130,6 @@ class SubtractionBlanksQuiz(Quiz, BlanksMixin):
     def generate(self):
         pairs = self.pairs(operator.gt)
         return [
-            self.qstring(n+1, first, second, "{}) {} - {} = {}")
+            self.qstring(n+1, first, second, "{}) {} - {} = {}", operator.sub)
             for (n,(first,second)) in enumerate(pairs)
         ]
